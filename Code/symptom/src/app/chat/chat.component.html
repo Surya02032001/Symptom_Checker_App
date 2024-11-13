@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="chat-window">
+      <div class="message-list">
+        <div *ngFor="let msg of messages" class="message" [ngClass]="{'user-message': msg.isUser, 'bot-message': !msg.isUser}">
+          {{ msg.text }}
+        </div>
+        <div *ngIf="loading" class="loading-message">Loading...</div> <!-- Loading indicator -->
+      </div>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="message"
+          placeholder="Type your message here..."
+          (keyup.enter)="sendMessage()"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
